@@ -7,17 +7,22 @@ namespace Unity.FPS.Game
 
     public static class Events
     {
-        public static ObjectiveUpdateEvent ObjectiveUpdateEvent = new ObjectiveUpdateEvent();
-        public static AllObjectivesCompletedEvent AllObjectivesCompletedEvent = new AllObjectivesCompletedEvent();
-        public static GameOverEvent GameOverEvent = new GameOverEvent();
-        public static PlayerDeathEvent PlayerDeathEvent = new PlayerDeathEvent();
-        public static EnemyKillEvent EnemyKillEvent = new EnemyKillEvent();
-        public static PickupEvent PickupEvent = new PickupEvent();
-        public static AmmoPickupEvent AmmoPickupEvent = new AmmoPickupEvent();
-        public static DamageEvent DamageEvent = new DamageEvent();
-        public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
+        #region Base Events
 
-        // Jibbe's Events
+        public static ObjectiveUpdateEvent ObjectiveUpdateEvent = new();
+        public static AllObjectivesCompletedEvent AllObjectivesCompletedEvent = new();
+        public static GameOverEvent GameOverEvent = new();
+        public static PlayerDeathEvent PlayerDeathEvent = new();
+        public static EnemyKillEvent EnemyKillEvent = new();
+        public static PickupEvent PickupEvent = new();
+        public static AmmoPickupEvent AmmoPickupEvent = new();
+        public static DamageEvent DamageEvent = new();
+        public static DisplayMessageEvent DisplayMessageEvent = new();
+
+        #endregion
+
+        #region Custom Events (Jibbe)
+
         public static XpUpdateEvent XpUpdateEvent = new();
         public static LevelUpEvent LevelUpEvent = new();
         public static SkillPointsChangedEvent SkillPointsChangedEvent = new();
@@ -27,22 +32,33 @@ namespace Unity.FPS.Game
         public static HPIncreasedEvent HPIncreasedEvent = new();
         public static SpeedIncreasedEvent SpeedIncreasedEvent = new();
         public static SkillTreeUIClosedEvent SkillTreeUIClosedEvent = new();
+
+        #endregion
     }
 
+    #region Event Classes
 
-    // Jibbe's Events
+    /// <summary>
+    /// Event carrying a reference to the Player GameObject.
+    /// </summary>
     public class PlayerEvent : GameEvent
     {
         public GameObject player;
     }
 
+    /// <summary>
+    /// Event triggered when the blaster damage buff is increased.
+    /// </summary>
     public class BlasterDMGIncreasedEvent : GameEvent
     {
-        private int dmgBuff; // Backing field
+        private int dmgBuff;
 
+        /// <summary>
+        /// Damage buff amount. Automatically broadcasts event when set.
+        /// </summary>
         public int DMGBuff
         {
-            get { return dmgBuff; }
+            get => dmgBuff;
             set
             {
                 dmgBuff = value;
@@ -51,13 +67,19 @@ namespace Unity.FPS.Game
         }
     }
 
+    /// <summary>
+    /// Event triggered when the player's HP is increased.
+    /// </summary>
     public class HPIncreasedEvent : GameEvent
     {
-        private int hpBuff; // Backing field
+        private int hpBuff;
 
+        /// <summary>
+        /// HP buff amount. Automatically broadcasts event when set.
+        /// </summary>
         public int HPBuff
         {
-            get { return hpBuff; }
+            get => hpBuff;
             set
             {
                 hpBuff = value;
@@ -66,13 +88,19 @@ namespace Unity.FPS.Game
         }
     }
 
+    /// <summary>
+    /// Event triggered when the player's speed is increased.
+    /// </summary>
     public class SpeedIncreasedEvent : GameEvent
     {
-        private int speedBuff; // Backing field
+        private int speedBuff;
 
+        /// <summary>
+        /// Speed buff amount. Automatically broadcasts event when set.
+        /// </summary>
         public int SpeedBuff
         {
-            get { return speedBuff; }
+            get => speedBuff;
             set
             {
                 speedBuff = value;
@@ -182,4 +210,5 @@ namespace Unity.FPS.Game
         public string Message;
         public float DelayBeforeDisplay;
     }
+    #endregion
 }

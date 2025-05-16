@@ -1,11 +1,10 @@
 using System.Collections;
 using TMPro;
 using Unity.FPS.Game;
-using Unity.FPS.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Unity.FPS.UI // FIX UI BAR 
+namespace Unity.FPS.UI 
 {
     public class PlayerXpBar : MonoBehaviour
     {
@@ -36,20 +35,6 @@ namespace Unity.FPS.UI // FIX UI BAR
             XpFillImage.fillAmount = 0;
         }
 
-        /*void Update()
-        {
-            if (m_XpManager != null)
-            {
-                // Calculate target fill amount based on current XP
-                float targetXpFill = (float)(m_XpManager.m_PlayerXP - m_XpManager.m_PrevThreshold)
-                    / (float)m_XpManager.m_CurThreshold;
-
-                // Slowly update xp bar value
-                XpFillImage.fillAmount = Mathf.Lerp(XpFillImage.fillAmount, targetXpFill, Time.deltaTime * LerpSpeed);
-                PlayerLevelText.text = m_XpManager.m_PlayerLevel.ToString();
-            }
-        }*/
-
         private void UpdateXpBar(XpUpdateEvent evt)
         {
             // Calculate target fill amount based on current XP
@@ -65,8 +50,7 @@ namespace Unity.FPS.UI // FIX UI BAR
             // Start a new Lerp coroutine
             currentLerpCoroutine = StartCoroutine(LerpXpFill(targetXpFill));
 
-            //// Slowly update xp bar value
-            //XpFillImage.fillAmount = Mathf.Lerp(XpFillImage.fillAmount, targetXpFill, Time.deltaTime * LerpSpeed);
+            // Slowly update xp bar value
             PlayerLevelText.text = _xpManager.PlayerLevel.ToString();
         }
 
@@ -89,3 +73,20 @@ namespace Unity.FPS.UI // FIX UI BAR
         }
     }
 }
+
+//OLD CODE - SAFE
+/* 
+    void Update()
+    {
+        if (m_XpManager != null)
+        {
+            // Calculate target fill amount based on current XP
+            float targetXpFill = (float)(m_XpManager.m_PlayerXP - m_XpManager.m_PrevThreshold)
+                / (float)m_XpManager.m_CurThreshold;
+
+            // Slowly update xp bar value
+            XpFillImage.fillAmount = Mathf.Lerp(XpFillImage.fillAmount, targetXpFill, Time.deltaTime * LerpSpeed);
+            PlayerLevelText.text = m_XpManager.m_PlayerLevel.ToString();
+        }
+    }
+*/
