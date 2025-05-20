@@ -6,13 +6,13 @@ using Unity.FPS.Game;
 [System.Serializable]
 public class Edge
 {
-    public GameObject fromNode; // Serialize the GameObject references
-    public GameObject toNode;   // Serialize the GameObject references
+    public GameObject fromNode;             // Serialize the GameObject references
+    public GameObject toNode;               // Serialize the GameObject references
 
     [HideInInspector]
-    public int fromNodeId; // ID of the prerequisite node
+    public int fromNodeId;                  // ID of the prerequisite node
     [HideInInspector]
-    public int toNodeId;   // ID of the target node
+    public int toNodeId;                    // ID of the target node
 
     private UILineRenderer uiLineRenderer;  // Keep this for internal use
 
@@ -46,7 +46,7 @@ public class Edge
             // Add the UILineRenderer component
             uiLineRenderer = edgeObject.AddComponent<UILineRenderer>();
 
-            // Optional: Set the colour and thickness for the line
+            // Set the colour and thickness for the line
             uiLineRenderer.color = Color.white;
             uiLineRenderer.thickness = 5f;
 
@@ -92,14 +92,14 @@ public class Edge
         rectTransform.anchorMin = new Vector2(0, 0);   // Bottom-left corner
         rectTransform.anchorMax = new Vector2(1, 1);   // Top-right corner
 
-        // Set the pivot to the center (optional, but for a stretch effect, this is usually desired)
+        // Set the pivot to the center
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
         // Set the position to zero or any other value if needed
         rectTransform.anchoredPosition = Vector3.zero;  // Center it or adjust as needed
         rectTransform.localPosition = Vector3.zero;
 
-        // Optionally, you can also set the sizeDelta if you want to explicitly control the size after stretching
+        // Set sizeDelta to explicitly control the size after stretching
         rectTransform.sizeDelta = Vector2.zero;
     } 
 }

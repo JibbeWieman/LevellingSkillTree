@@ -87,4 +87,3 @@ public class HideTooltipCommand : Command
         Debug.Log($"Hiding ToolTip: <color=#42ff98>{_tooltip}</color>");
     }
 }
-
